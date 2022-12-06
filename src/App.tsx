@@ -1,13 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {Tasks} from "./Tasks";
-
-
-// Hi Guys!
-// Let's reinforce our current session!
-// -You have 2 arrays. You should create a new component TASKS, where you will render these arrays.
-// -Don't forget to assign types to our data.
-
+import {Tasks} from "./Componets/Tasks";
+import {TopCars} from "./Componets/TopCars";
+import {Button} from "./Componets/Button";
+import {Money} from "./Componets/Money";
 
 
 function App() {
@@ -65,7 +61,7 @@ function App() {
             'Ralphie Hebert',
         ]
     }
-    const data2 =   {
+    const data2 = {
         title: "What to learn",
         tasks: [
             {taskId: 1, title: "HTML&CSS", isDone: true},
@@ -124,41 +120,37 @@ function App() {
             'Micheal Talbot95',
         ]
     }
-
-    return (
+    const topCars = [
+        {manufacturer: 'BMW', model: 'm5cs'},
+        {manufacturer: 'Mercedes', model: 'e63s'},
+        {manufacturer: 'Audi', model: 'rs6'}
+    ];
+    const onClickHandler = (subscriber: string, age: number) => {
+        console.log(subscriber + age)
+    }
+    let [a, setA] = useState(0)
+    const counter = ()=>{
+         setA(++a);
+    }
+    const counterReset = ()=>{
+        setA(a=0);
+    }
+        return (
         <div className="App">
-    <Tasks data={data1} />
-    <Tasks data={data2} />
+            <Tasks data={data1}/>
+            <Tasks data={data2}/>
+            <TopCars dataCars={topCars}/>
+            <Button name={"B1"} callBack={() => onClickHandler('vasya', 25)}/>
+            <Button name={"B2"} callBack={() => onClickHandler('yyy', 22)}/>
+            <Button name={"B3"} callBack={() => counter()}/>
+            <Button name={"B4=0"} callBack={() => counterReset()}/>
+            <h2>{a}</h2>
+            <Money/>
         </div>
     );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //--------------------------------------------------------------
