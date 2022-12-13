@@ -1,6 +1,7 @@
 import {useState} from "react";
 
 
+type MoneyType = 'All'|'RUBLS'|'Dollars';
 export const Money = () => {
     const [money, setMoney] = useState([
         {banknots: 'Dollars', value: 100, number: ' a1234567890'},
@@ -12,8 +13,8 @@ export const Money = () => {
         {banknots: 'Dollars', value: 50, number: ' x1234567890'},
         {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
     ])
-    const [nameMoney, setNameMoney] = useState('All')
-    const showMoney = (name: string) => {
+    const [nameMoney, setNameMoney] = useState<MoneyType>('All')
+    const showMoney = (name: MoneyType) => {
         setNameMoney(name)
     }
     let currentMoney;
